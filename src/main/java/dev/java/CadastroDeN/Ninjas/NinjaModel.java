@@ -1,6 +1,7 @@
-package dev.java.CadastroDeN;
+package dev.java.CadastroDeN.Ninjas;
 
 
+import dev.java.CadastroDeN.Missoes.MissoesModel;
 import jakarta.persistence.*;
 
 
@@ -15,6 +16,12 @@ public class NinjaModel {
     private String nome;
     private String email;
     private int idade;
+
+
+    // Muitos ninjas para uma missão
+    @ManyToOne
+    @JoinColumn(name = "missoes_id") // Foreing Key / Chave estrangeira.
+    private MissoesModel missoes;
 
     public NinjaModel() {
     }
