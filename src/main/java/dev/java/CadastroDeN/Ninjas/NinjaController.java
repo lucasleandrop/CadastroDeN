@@ -15,20 +15,28 @@ public class NinjaController {
         this.ninjaService = ninjaService;
     }
 
+
+
     @GetMapping("/boasvindas")
     public String boasVindas() {
         return "Essa é a minha primeira mensagem nessa rota.";
     }
-        //Adicionar / criar
+
+
+        //Adicionar / create
         @PostMapping("/criar")
-        public String criarNinhja() {
-            return "Ninja Criado";
+        public NinjaModel criarNinja(@RequestBody NinjaModel ninja){
+        return ninjaService.criarNinja(ninja);
         }
+
+
             //Mostrar
             @GetMapping("/todos")
                     public List<NinjaModel> mostrarTodos (){
                 return ninjaService.mostrarTodos();
             }
+
+
 
         //Procurar
         @GetMapping("/listar/{id}")
@@ -36,12 +44,15 @@ public class NinjaController {
         return ninjaService.listarPorId(id);
     }
 
-        //Alterar
 
+
+        //Alterar
         @PutMapping("/alterar")
     public String alterarPorId() {
         return "Alterar por ID";
     }
+
+
 
         //Deletar
         @DeleteMapping("/deletarID")
